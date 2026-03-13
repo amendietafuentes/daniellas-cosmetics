@@ -489,6 +489,7 @@ color:#cc0000;
 	font-size: 32px;
 	margin-bottom: 45px;
 	font-family: 'Poppins';
+    text-transform: uppercase;
 }
 
 
@@ -577,6 +578,50 @@ color:#cc0000;
 
 .product-card:hover::after {
 	border-color: var(--primary);
+}
+
+/* ===============================
+   CAROUSEL PRODUCTOS NUEVOS
+================================ */
+
+.home-products-carousel{
+    padding:70px 0;
+}
+
+.product-card{
+    text-align:center;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.product-image img{
+    width:100%;
+}
+
+.product-title{
+    font-size:15px;
+    margin:12px 0;
+}
+
+.product-price{
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.btn-add-cart{
+    display:inline-block;
+    background:var(--primary);
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    font-size:14px;
 }
 
 

@@ -4,6 +4,8 @@
 
 <?php get_template_part('template-parts/blocks/hero/hero-slider'); ?>
 
+<?php get_template_part('template-parts/blocks/products/product-carousel'); ?>
+
 <?php get_template_part('template-parts/blocks/categories'); ?>
 
 <?php get_template_part('template-parts/blocks/products/product-grid'); ?>
