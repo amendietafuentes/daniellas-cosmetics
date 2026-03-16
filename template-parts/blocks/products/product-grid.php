@@ -2,7 +2,7 @@
    <div class="container">
       <h2 class="section-title">ENCUENTRA TU FAVORITO</h2>
       <div class="products-grid">
-         <?php $args = array( 'post_type' => 'product', 'posts_per_page' => 8, 'post_status' => 'publish' ); $loop = new WP_Query($args); if($loop->have_posts()) : while($loop->have_posts()) : $loop->the_post(); global $product; ?> 
+         <?php $args = array( 'post_type' => 'product', 'posts_per_page' => 6, 'post_status' => 'publish' ); $loop = new WP_Query($args); if($loop->have_posts()) : while($loop->have_posts()) : $loop->the_post(); global $product; ?> 
          <div class="product-card">
             <a href="<?php the_permalink(); ?>" class="product-image"> <?php echo woocommerce_get_product_thumbnail(); ?> </a> 
             <div class="product-info">

@@ -6,6 +6,8 @@
 
 <?php get_template_part('template-parts/blocks/value-props'); ?>
 
+<?php get_template_part('template-parts/blocks/products/sale-products'); ?>
+
 <?php get_template_part('template-parts/blocks/products/product-carousel'); ?>
 
 <?php get_template_part('template-parts/blocks/categories'); ?>

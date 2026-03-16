@@ -2,70 +2,83 @@
 
 <div class="container mx-auto px-6 py-10 grid md:grid-cols-4 gap-8">
 
-<div>
-
-<h3 class="text-lg font-semibold mb-4">
-About
-</h3>
-
-<p class="text-gray-400">
-Premium cosmetics designed to enhance natural beauty.
-</p>
-
-</div>
-
-<div>
-
-<h3 class="text-lg font-semibold mb-4">
-Shop
-</h3>
+<!-- Columna 1 -->
+<div class="footer-col footer-col-1">
 
 <?php
-wp_nav_menu([
-'theme_location' => 'footer_menu',
-'container' => false
-]);
+// LOGO DEL SITIO
+if ( function_exists( 'the_custom_logo' ) ) {
+the_custom_logo();
+}
+?>
+
+<?php
+if ( is_active_sidebar( 'footer-1' ) ) :
+dynamic_sidebar( 'footer-1' );
+endif;
 ?>
 
 </div>
 
-<div>
 
-<h3 class="text-lg font-semibold mb-4">
-Customer Service
-</h3>
+<!-- Columna 2 -->
+<div class="footer-col">
 
-<ul class="text-gray-400">
-<li>Shipping</li>
-<li>Returns</li>
-<li>Contact</li>
-</ul>
+<?php
+if ( is_active_sidebar( 'footer-2' ) ) :
+dynamic_sidebar( 'footer-2' );
+endif;
+?>
 
 </div>
 
-<div>
 
-<h3 class="text-lg font-semibold mb-4">
-Newsletter
-</h3>
+<!-- Columna 3 -->
+<div class="footer-col">
 
-<p class="text-gray-400 mb-3">
-Subscribe for updates
-</p>
+<?php
+if ( is_active_sidebar( 'footer-3' ) ) :
+dynamic_sidebar( 'footer-3' );
+endif;
+?>
 
-<input type="email" placeholder="Email" class="w-full p-2 text-black">
+</div>
+
+
+<!-- Columna 4 -->
+<div class="footer-col">
+
+<?php
+if ( is_active_sidebar( 'footer-4' ) ) :
+dynamic_sidebar( 'footer-4' );
+endif;
+?>
 
 </div>
 
 </div>
+
+
+<!-- Copyright -->
 
 <div class="text-center py-4 border-t border-gray-700">
 
 <p>
-© <?php echo date('Y'); ?> Daniella's Cosmetics
+© <?php echo date('Y'); ?> <?php bloginfo('name'); ?>
 </p>
 
 </div>
+
+<?php if ( is_active_sidebar( 'footer-payments' ) ) : ?>
+
+<div class="footer-payments">
+
+<?php dynamic_sidebar( 'footer-payments' ); ?>
+
+</div>
+
+<?php endif; ?>
+
 
 </footer>
 

@@ -85,3 +85,61 @@ function theme_scripts(){
 }
 
 add_action('wp_enqueue_scripts','theme_scripts');
+
+function daniellas_footer_widgets() {
+
+register_sidebar([
+    'name' => 'Footer Columna 1',
+    'id' => 'footer-1',
+    'before_widget' => '<div class="footer-widget">',
+    'after_widget' => '</div>',
+]);
+
+register_sidebar([
+    'name' => 'Footer Columna 2',
+    'id' => 'footer-2',
+    'before_widget' => '<div class="footer-widget">',
+    'after_widget' => '</div>',
+]);
+
+register_sidebar([
+    'name' => 'Footer Columna 3',
+    'id' => 'footer-3',
+    'before_widget' => '<div class="footer-widget">',
+    'after_widget' => '</div>',
+]);
+
+register_sidebar([
+    'name' => 'Footer Columna 4',
+    'id' => 'footer-4',
+    'before_widget' => '<div class="footer-widget">',
+    'after_widget' => '</div>',
+]);
+
+}
+
+add_action('widgets_init','daniellas_footer_widgets');
+
+register_sidebar([
+    'name' => 'Footer Métodos de Pago',
+    'id' => 'footer-payments',
+    'before_widget' => '<div class="payment-methods">',
+    'after_widget' => '</div>',
+]);
+
+register_sidebar([
+    'name' => 'Footer Métodos de Pago',
+    'id' => 'footer-payments',
+    'before_widget' => '<div class="payment-methods">',
+    'after_widget' => '</div>',
+]);
+
+function remove_storefront_sidebar_pages() {
+
+if ( is_page() ) {
+    remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
+}
+
+}
+
+add_action('get_header','remove_storefront_sidebar_pages');
