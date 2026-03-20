@@ -136,10 +136,107 @@ register_sidebar([
 
 function remove_storefront_sidebar_pages() {
 
-if ( is_page() ) {
-    remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
-}
+    if ( is_page() ) {
+        remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
+    }
 
 }
 
 add_action('get_header','remove_storefront_sidebar_pages');
+
+
+function yoodc_popular_products_section() {
+
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 4,
+        'meta_key' => 'total_sales',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC'
+    );
+
+    $query = new WP_Query($args);
+
+    ob_start();
+
+?>
+
+<section class="popular-products-section">
+
+    <div class="popular-header">
+        <h2>Productos Populares</h2>
+        <p>Nuestros productos más populares al mejor precio para ti</p>
+    </div>
+
+    <div class="popular-products-grid">
+
+    <?php while ($query->have_posts()) : $query->the_post(); global $product; ?>
+
+    <div class="popular-product-card">
+
+    <a href="<?php the_permalink(); ?>" class="product-image">
+    <?php echo woocommerce_get_product_thumbnail(); ?>
+    </a>
+
+    <h3 class="product-title"><?php the_title(); ?></h3>
+
+    <span class="price"><?php echo $product->get_price_html(); ?></span>
+
+    <a href="?add-to-cart=<?php echo $product->get_id(); ?>" class="buy-button">
+    Comprar ahora
+    </a>
+
+    </div>
+
+    <?php endwhile; ?>
+
+    </div>
+
+</section>
+
+<?php
+
+wp_reset_postdata();
+
+return ob_get_clean();
+}
+
+add_shortcode('productos_populares', 'yoodc_popular_products_section');
+
+/* Paginación productos */
+
+add_action('woocommerce_after_shop_loop', 'woocommerce_pagination', 10);
+
+
+/* Remove WooCommerce sidebar */
+
+add_action('wp', 'dc_remove_woocommerce_sidebar');
+
+function dc_remove_woocommerce_sidebar(){
+
+    if(is_shop() || is_product_category() || is_product_tag()){
+
+        remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+
+    }
+
+}
+
+function theme_child_woocommerce_support() {
+    add_theme_support('woocommerce');
+}
+
+add_action('after_setup_theme', 'theme_child_woocommerce_support');
+
+
+/* Themify WooCommerce Filter */
+
+add_action('woocommerce_before_shop_loop', 'dc_add_product_filters', 5);
+
+function dc_add_product_filters(){
+
+echo '<div class="shop-filters">';
+echo do_shortcode('[tf_product_filter id="filtrar_productos_por"]');
+echo '</div>';
+
+}

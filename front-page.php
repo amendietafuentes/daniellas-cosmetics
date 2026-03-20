@@ -14,6 +14,16 @@
 
 <?php get_template_part('template-parts/blocks/products/product-grid'); ?>
 
+<?php echo do_shortcode('[productos_populares]'); ?>
+
+<section class="faq-section">
+
+    <h2>¿Tienes preguntas? ¡Tenemos respuestas!</h2>
+
+    <?php echo do_shortcode('[faq display="accordion"]'); ?>
+
+</section>
+
 <?php get_template_part('template-parts/blocks/promo-banner'); ?>
 
 <?php get_template_part('template-parts/blocks/benefits'); ?>
